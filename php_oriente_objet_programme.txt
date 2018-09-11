@@ -1,0 +1,20 @@
+PHP Orient� Objet
+
+J1 :
+01-classes-objet-insistance-visibilit�
+02-getter-setter-constrcuteur-this
+03-manipulation-type-argument
+04-constante-static-self
+
+J2 : 
+05-h�ritage (notion essentielle que l'on retoruve dans tous les languages  en objet)
+06-Surcharge-abstraction-finalisation-interface-trait (chapitre tr�s abstrait - doliprane conseill�es)
+07-namespace (comment travailler � plusieurs dev' sur un m�me projet)
+08-Autoload (Eviter de faire des dizaines de 'require')
+09-m�thodes-magiques (quelques fonctiuons utiles existant dans le PHP OO)
+10-classes-objet-instance-visibilit� (les classes qui existent d�j� dans le langage)
+11-PDO (d�j� fait avec Christophe)
+
+J3-4 : 
+12-boutique (miniframework maison bas� sur la logique de symfony)
+
