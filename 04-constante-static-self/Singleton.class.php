@@ -32,3 +32,5 @@ echo '<pre>';
 var_dump($singleton);
 var_dump($singleton2);
 echo '</pre>';
+
+// $singleton2 et $singleton font référence au même objet
