@@ -1,0 +1,29 @@
+----------------------------
+EXPLICATIONS MINI-FRAMEWORK 
+----------------------------
+
+Arboresecence : '/' : signifie un dossier
+---------------
+    app/ : La configuration de notre application
+    src/ : Le code PHP et HTML spécifique à notre projet
+    vendor/ : Code général (coeur) de l'application
+    web/ : Répertoire web racine, point d'entrée de notre application (index.php, img/, photo/, JS/, fonts/). Les assets (ressources).
+
+
+Nature des différents fichiers : 
+--------------------------------
+
+app/ 
+    Config/
+        parameters.php : Contient toutes les informations de connexion à la BDD.... et autres paramètres
+
+    config.php : Contient la classe Config dont l'objectif est de récupérer les paramètres et de les servir...
+
+vendor/
+    autoload.php : Ce fichier permet d'inclure (require) les bons fichiers lors des instanciations. Lorsqu'on va créer un objet l'autoload va se chercher d'inclure la classe nécessaire.
+
+src/
+    Entity/
+        Produit.php / Membre.php / Commande.php : 
+        
+

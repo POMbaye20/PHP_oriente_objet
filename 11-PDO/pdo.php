@@ -42,10 +42,70 @@ $pdo = new PDO ('mysql:host=localhost;dbname=entreprise', 'root', '', array(
 
 
 try {
-    $resultat = $pdo -> query ("qsdqsdqsqsdqdsq");
+    // $resultat = $pdo -> query ("qsdqsdqsqsdqdsq");
 
-  
+
+    $prenom = 'Amandine';
+    $nom = 'Thoyer';
+
+    // Marqueur ?
+    $resultat = $pdo -> prepare("SELECT * FROM employes WHERE prenom = ? AND nom = ?");
+    $resultat -> execute(array(
+        $prenom,
+        $nom
+    ));
+
+    // Marqueur nominatif ':' : 
+     $resultat = $pdo -> prepare("SELECT * FROM employes WHERE prenom = :prenom AND nom = :nom");
+     $resultat -> execute(array(
+        ':nom' => $nom,
+        ':prenom' => $prenom
+    ));
+
+    // Marqueur nominatif ':' + bindParam()
+    $resultat = $pdo -> prepare("SELECT * FROM employes WHERE prenom = :prenom AND nom = :nom");
+    $resultat -> bindParam(':prenom', $prenom, PDO::PARAM_STR);
+    $resultat -> bindParam(':nom', $nom, PDO::PARAM_STR);
+    // $resultat -> bindParam(':telephone', $telephone, PDO::PARAM_INT);
+    $resultat -> execute();
+
+
+    // Fetch vs FetchAll (requete avec plusieurs résultats)
     
+    // Fetch
+    $resultat = $pdo -> query("SELECT * FROM employes");
+    // $resultat = OBJ PDO::Statement
+    // $resultat = INEXPLOITABLE
+    // Combien de résultat à la requête : PLUSIEURS ===> Boucle
+
+    while ($employes = $resultat -> fetch(PDO::FETCH_ASSOC)) {
+        echo '<h3>' . $employes['prenom'] . '</h3>';
+        echo '<ul>';
+        foreach ($employes as $valeur) {
+            echo '<li>' . $valeur . '</li>';
+        }
+        echo '</ul>';
+    }
+
+    // FetchAll :
+    $resultat = $pdo -> query("SELECT * FROM employes");
+    // $resultat = OBJ PDO Statement
+    // $resultat = INEXPLOITABLE
+    // Un ou plusieurs résultats : Plusieurs ==> boucle ou fetchAll
+    $employes = $resultat -> fetchAll(PDO::FETCH_ASSOC);
+    echo '<pre>';
+    print_r($employes);
+    echo '</pre>';
+
+    foreach ($employes as $emp) {
+        echo '<h3>' . $emp['prenom'] . '</h3>';
+        echo '<ul>';
+        foreach ($emp as $valeur) {
+            echo '<li>' . $valeur . '</li>';
+        }
+        echo '</ul>';
+    }
+
 
 }
 catch(PDOException $e) {
@@ -53,7 +113,7 @@ catch(PDOException $e) {
     echo 'Erreur SQL : <br/>';
     echo 'Erreur : ' . $e -> getMessage() . '<br/>';
     echo 'Fichier : ' . $e -> getFile() . '<br/>';
-    echo 'Ligne : ' . $e -> getlLine() . '<br/>';
+    echo 'Ligne : ' . $e -> getLine() . '<br/>';
     echo '</div>';
 
     $f = fopen('erreur.txt', 'a');
