@@ -23,7 +23,7 @@ class Autoload
             $path = __DIR__ . '/' . implode('/', $tab) . '.php';
         }
         else {
-            $path = __DIR__ . '/../src' . implode('/', $tab) . '.php';
+            $path = __DIR__ . '/../src/' . implode('/', $tab) . '.php';
         }
 
         require $path;

@@ -24,6 +24,13 @@ vendor/
 
 src/
     Entity/
-        Produit.php / Membre.php / Commande.php : 
-        
+        Produit.php / Membre.php / Commande.php : Ces classes contiennet toutes les propriétés (private) de nos entités + les getters et les setters. Ce sont les plans de fabrications de nos entités. On les appelle des POPO (Plain Old PHP Object)
+
+web/ 
+    index.php : Clé d'entrée de notre application (app.php ou app_dev.php)
+
+vendor/ 
+    Manager/
+        PDOManager : cette classe représente la connexion à la BDD. Elle contient et nous retourne notre objet PDO, grâce auquel nous pourrons exécuter des requêtes SQL.      
+        Cette classe est un singleton. Cela signifie qu'il ne peut y avoir qu'un seul objet issu de cette classe.
 
