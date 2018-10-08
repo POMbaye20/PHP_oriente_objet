@@ -23,7 +23,7 @@
 				<h4>Prix : <?php echo number_format($produit -> getPrix(),2,',',''); ?> €</h4>
 			
  				
-				<br><a href=""> Retour vers votre sélection</a>
+				<br><a href="<?= $url ?>produit/categorie/<?=$produit -> getCategorie() ?>"> Retour vers votre sélection</a>
 			</div><!-- .col-md-4 -->
         </div>
         <!-- /.row -->
@@ -39,7 +39,7 @@
 			<?php if($suggestions) : ?>
 			<?php foreach($suggestions as $sug) : ?>
 			<div class="col-sm-3">
-				<a href="">
+				<a href="<? $url ?>prioduit/affiche/<?= $sug -> getId_produit() ?>">
 					<img class="img-fluid" src="<?= $url .$sug -> getPhoto() ?>">
 				 </a>
 				<h4><?= $sug -> getTitre() ?></h4>

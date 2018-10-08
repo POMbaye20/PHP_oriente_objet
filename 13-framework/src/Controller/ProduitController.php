@@ -45,7 +45,8 @@ class ProduitController extends Controller
 
         $params = array(
             'produits' => $produits,
-            'categories' => $categories
+            'categories' => $categories,
+            'title' => 'Les produits de la catégories ' . $cat . ' :'
         );
 
         return $this -> render ('layout.html', 'boutique.html',$params);
